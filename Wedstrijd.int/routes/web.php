@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
+//Dashboard 
+    Route::get('/dashboard', 'UserController@index');
+	Route::get('/dashboard/delete/{id}', 'UserController@destroy');
+	Route::get('/dashboard/restore/{id}', 'UserController@restore');
+
+//Code valideren
+Route::post('/code', array('as' => 'code', 'uses' => 'CodeController@store'));
